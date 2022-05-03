@@ -3,10 +3,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Option from './Option'
 
-const SelectOptions = ({ title, typeImage, onClick, index }) => {
+const SelectOptions = ({ title, typeImage, onClick, index, idQuestion, answerPainted }) => {
   // console.log('typeImage', typeImage)
   return(
-    <Content>
+    <Content id={`${index + 1}`}>
       <Title>{title}</Title>
       <WrapperOptions>
         {
@@ -14,8 +14,10 @@ const SelectOptions = ({ title, typeImage, onClick, index }) => {
             return(
               <>
                 <Option
+                  answerPainted={answerPainted}
+                  idReponse={item?.idReponse}
                   key={i}
-                  onClick={() => onClick(index, item, i)}
+                  onClick={() => onClick(index, item, title, idQuestion)}
                   nameOption={item?.text} 
                   imageLink={item?.multimedia?.path}
                 />
@@ -31,10 +33,13 @@ const SelectOptions = ({ title, typeImage, onClick, index }) => {
 export default SelectOptions
 
 const Content = styled.div`
-  width: 70%;
+  width: 90%;
   min-height: 400px;
   height: 100%;
-  margin: 15px auto;
+  margin: 20px auto;
+  @media (max-width: 580px){
+    width: 98%;
+  }
 `
 const Title = styled.h1`
   width: 70%;

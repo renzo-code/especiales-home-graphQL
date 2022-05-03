@@ -8,7 +8,7 @@ const SocialBar = () => {
   return(
     <>
       <div className='social'>
-        <div>
+        <div className='wrapperF'>
           <FacebookShareButton url='larepublica.pe' quote='soy el titulo'>
             <ContentIconF>
               <FontAwesomeIcon icon={faFacebookF}/>
@@ -39,6 +39,20 @@ const SocialBar = () => {
           width: 200px;
           margin-right: 10px;
         }
+        @media (max-width: 620px){
+          .social{
+            width: 150px;
+          }
+          .wrapperF{
+            display: flex;
+          }
+        }
+        @media (max-width: 450px) {
+          .social{
+            width: 120px;
+            margin-right: 0px;
+          }
+        }
       `}</style>
     </>
   )
@@ -58,6 +72,8 @@ const ContentIconF = styled.div`
   color: #1D31A7;
   @media (max-width: 450px) {
     margin: 0 auto;
+    height: 15px;
+    width: 15px;
   }
 `
 const ContentIconT = styled.div`
@@ -71,6 +87,8 @@ const ContentIconT = styled.div`
   color: #17C1E5;
   @media (max-width: 450px) {
     margin: 0 auto;
+    height: 25px;
+    width: 25px;
   }
 `
 const ContentIconW = styled.div`
@@ -84,5 +102,7 @@ const ContentIconW = styled.div`
   color: #38AA2D;
   @media (max-width: 450px) {
     margin: 0 auto;
+    height: 25px;
+    width: 25px;
   }
 `

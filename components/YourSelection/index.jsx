@@ -1,30 +1,31 @@
-import React from 'react'
+import React from "react";
 
-import styled from 'styled-components'
-import Button from 'components/Button'
-import OptionResponse from './Option'
-import { isEmpty } from 'ramda'
+import styled from "styled-components";
+import OptionResponse from "./Option";
+import { isEmpty } from "ramda";
 
-const YourSelection = ({arrayResponse}) => {
-  return(
-    <ContainerSelection>
-      <Title>TU SELECCIÓN</Title>
-      <Wrapper>
-        {
-          !isEmpty(arrayResponse) &&
-            arrayResponse?.map((item, i) => {
-              console.log('item', item)
-              return(
+const YourSelection = ({ arrayResponse, onClick }) => {
+  return (
+    !isEmpty(arrayResponse) && (
+      <ContainerSelection>
+        <Title>TU SELECCIÓN</Title>
+        <Wrapper>
+          {!isEmpty(arrayResponse) &&
+            arrayResponse.map((item, i) => {
+              {/* console.log("item", item); */}
+              return (
                 <OptionResponse
+                  onClick={() => onClick(item?.indexTrivia)}
                   key={i}
                   nameBtn={item?.title}
                   nPregunta={item?.indexTrivia + 1}
+                  question={item?.question}
                 />
               )
-            })
-        }
-      </Wrapper>
-    </ContainerSelection>
+            })}
+        </Wrapper>
+      </ContainerSelection>
+    )
   )
 }
 
@@ -41,19 +42,20 @@ const Title = styled.h1`
   font-size: 25px;
   text-align: center;
   letter-spacing: -0.2px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   &::after {
     display: block;
     content: "";
     height: 4px;
     width: 110px;
-    background-color: #DB2237;
+    background-color: #db2237;
     margin: 5px auto 10px;
   }
 `
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   height: auto;
 `

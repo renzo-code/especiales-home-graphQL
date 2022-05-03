@@ -2,10 +2,15 @@ import React from 'react'
 
 import Button from 'components/Button'
 
-const Option = ({nameBtn, onClick}) => {
+const Option = ({nameBtn, onClick, answerPainted, idReponse}) => {
   return(
     <>
-        <Button onClick={onClick} nameBtn={nameBtn}/>
+        <Button
+          answerPainted={answerPainted} 
+          idReponse={idReponse} 
+          onClick={onClick} 
+          nameBtn={nameBtn}
+        />
     </>
   )
 }

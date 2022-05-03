@@ -4,11 +4,11 @@ import styled from 'styled-components'
 import BlockVideo from './BlockVideo'
 import { isEmpty } from 'ramda'
 
-const SelectVideos = ({ title, typeVideo, onClick, index }) => {
+const SelectVideos = ({ title, typeVideo, onClick, index, idQuestion, answerPainted }) => {
   const posterDefault = "https://media.cdn.republica.gt/032022/1647294957034.webp?cw=753&ch=423&extw=jpg"
 
   return(
-    <Content>
+    <Content id={`${index + 1}`}>
       <Title>{title}</Title>
       <WrapperVideos>
         {
@@ -17,8 +17,10 @@ const SelectVideos = ({ title, typeVideo, onClick, index }) => {
               return(
                 <>
                   <BlockVideo
+                    answerPainted={answerPainted}
+                    idReponse={item?.idReponse}
                     key={i}
-                    onClick={() => onClick(index, item, i)}
+                    onClick={() => onClick(index, item, title, idQuestion)}
                     url={item?.multimedia?.path}
                     poster={posterDefault}
                     nameButton={item?.text}
@@ -38,13 +40,17 @@ const Content = styled.div`
   width: 90%;
   min-height: 400px;
   height: 100%;
-  margin: 15px auto;
+  margin: 20px auto;
+
+  @media (max-width: 580px){
+    width: 98%;
+  }
 `
 const Title = styled.h1`
   width: 100%;
   font-size: 25px;
   text-align: center;
-  margin: 0 auto;
+  margin: 25px auto 10px;
   letter-spacing: -0.2px;
   font-family: 'Roboto', sans-serif;
   &::after {

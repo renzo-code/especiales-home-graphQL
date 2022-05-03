@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import Option from './Option'
 import { isEmpty } from 'ramda'
 
-const SelectText = ({title, typeTxt, onClick, index}) => {
+const SelectText = ({title, typeTxt, onClick, index, idQuestion, answerPainted}) => {
   return(
-    <Content>
+    <Content id={`${index + 1}`}>
       <Title>{title}</Title>
       <WrapperOptions>
       {
@@ -14,9 +14,11 @@ const SelectText = ({title, typeTxt, onClick, index}) => {
         typeTxt?.map((item, i) => {
           return(
             <>
-              <Option 
+              <Option
+                answerPainted={answerPainted}
+                idReponse={item?.idReponse}
                 key={i}
-                onClick={() => onClick(index, item, i)}
+                onClick={() => onClick(index, item, title, idQuestion)}
                 nameBtn={item?.text}
               />
             </>
@@ -32,10 +34,10 @@ export default SelectText
 
 const Content = styled.div`
   width: 90%;
-  min-height: 250px;
+  min-height: 200px;
   height: auto;
   /* background-color: blue; */
-  margin: 15px auto;
+  margin: 20px auto;
 `
 const WrapperOptions = styled.div`
   width: 100%;

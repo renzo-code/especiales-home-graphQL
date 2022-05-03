@@ -7,26 +7,32 @@ import { SEND_RESPONSE_DATA } from 'graphql/mutation'
 import { useMutation } from '@apollo/client'
 
 
-const SelectImage = ({ title, typetxtImageBox, onClick, index }) => {
+const SelectImage = ({ title, typetxtImageBox, onClick, index, idQuestion, answerPainted }) => {
   
   const [addResponse, { data, loading, error, reset }] = useMutation(SEND_RESPONSE_DATA)
   if (loading) return 'Enviando...'
   if (error) return `Error de envio ${error.message}`
   
+
+
   return (
-    <Content>
+    <Content id={`${index + 1}`}>
       <Title>{title}</Title>
       <WrapperOptions>
       {
         !isEmpty(typetxtImageBox) &&
           typetxtImageBox.map((item, i) => {
+            {/* console.log('item: ', item) */}
             return(
               <Option
-                onClick={() => onClick(index, item, i)}
+                answerPainted={answerPainted}
+                idReponse={item.idReponse}
+                onClick={() => onClick(index, item, title, idQuestion)}
                 key={i}
                 image={item?.multimedia?.path}
                 alt={item?.multimedia?.data?.alt}
                 nameBtn={item?.multimedia?.data?.title}
+                selected={i}
               />
             )
           })
@@ -43,7 +49,10 @@ const Content = styled.div`
   min-height: 400px;
   height: 100%;
   /* background-color: blue; */
-  margin: 0 auto;
+  margin: 20px auto;
+  @media (max-width: 580px){
+    width: 98%;
+  }
 `
 const Title = styled.h1`
   padding: 10px 0;

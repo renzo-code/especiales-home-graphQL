@@ -1,14 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const OptionResponse = ({nameBtn, onClick, nPregunta}) => {
+const OptionResponse = ({nameBtn, onClick, nPregunta, question}) => {
   return(
     <>
       <Btn
         onClick={onClick}
       >
-        <TitleButton>Pregunta: {nPregunta}</TitleButton>
-        {nameBtn}
+        <a style={{color: 'black', width: 'auto'}} href={`#${nPregunta}`}>
+          <TitleButton>{question}</TitleButton>
+          <br></br>
+          <TitleResponse>
+            {nameBtn}
+          </TitleResponse>
+        </a>
       </Btn>
     </>
   )
@@ -27,19 +32,24 @@ const Btn = styled.div`
   outline: none;
   border: 3px solid #BEBEBE;
   max-width: 230px;
-  margin-left: 15px;
   padding: 5px;
   text-align: center;
+  margin-left: 10px;
   &&:hover{
-    padding-top: 10px;
     background-color: #D82239;
     color: white;
     cursor: pointer;
-    border: none;
+    border: 3px solid #D82239;
   }
 `
 const TitleButton = styled.h2`
   font-size: 18px;
   text-align: center;
   height: auto;
+`
+const TitleResponse = styled.h2`
+  font-weight: 100;
+  @media (max-width: 500px){
+    
+  }
 `

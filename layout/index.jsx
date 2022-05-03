@@ -16,6 +16,8 @@ const Layout = ({ children }) => {
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"></link>
+      
+        <title>LR Especiales | Trivias</title>
       </NextHead>
       <Wrapper>
         <Header/>

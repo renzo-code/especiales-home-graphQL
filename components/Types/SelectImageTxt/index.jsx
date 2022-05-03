@@ -4,11 +4,9 @@ import styled from 'styled-components'
 import Options from './Options'
 import { isEmpty } from 'ramda'
 
-//MANDAR COMO PROP EL ARREGLO PARA RECORRERLO Y CREAR LAS OPCIONES EN BOTONES
-const SelectImageTxt = ({ title, typeImageText, dataImg, onClick, index }) => {
-  // console.log('typeImageTextsssss', typeImageText)
+const SelectImageTxt = ({ title, typeImageText, dataImg, onClick, index, idQuestion, answerPainted }) => {
   return (
-    <Content>
+    <Content id={`${index + 1}`}>
       <WrapperContent>
         <Title>{title}</Title>
         <WrapperImage>
@@ -21,8 +19,10 @@ const SelectImageTxt = ({ title, typeImageText, dataImg, onClick, index }) => {
               return (
                 <>
                   <Options
+                    answerPainted={answerPainted}
+                    idReponse={item?.idReponse}
                     key={i}
-                    onClick={() => onClick(index, item, i)}
+                    onClick={() => onClick(index, item, title, idQuestion)}
                     nameBtn={item?.text}
                   />
                 </>
@@ -38,10 +38,10 @@ const SelectImageTxt = ({ title, typeImageText, dataImg, onClick, index }) => {
 export default SelectImageTxt
 
 const Content = styled.div`
-  width: 70%;
+  width: 90%;
   min-height: 400px;
   height: 100%;
-  margin: 15px auto;
+  margin: 20px auto;
 `
 const WrapperContent = styled.div`
   height: 100%;
@@ -68,6 +68,7 @@ const WrapperImage = styled.div`
   justify-content: center;
   height: auto;
   width: auto;
+  margin-bottom: 10px;
 `
 const Image = styled.img`
   height: 100%;

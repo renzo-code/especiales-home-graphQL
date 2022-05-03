@@ -31,6 +31,11 @@ const WrapperImg = styled.div`
   height: auto;
   width: 255px;
   margin-left: 20px;
+
+  @media (max-width: 470px){
+    width: 210px;
+    margin-left: 10px;
+  }
 `
 const Logo = styled.img`
   height: 100%;
