@@ -7,9 +7,9 @@ const Header = () => {
   return(
     <Content>
       <WrapperImg>
-        <Logo src='./img/LRespeciales.png' />
+        <Logo src='https://origin.cronosmedia.glr.pe/large/2023/01/27/lg_63d4558adf3bf1086c392bb8.jpg' />
       </WrapperImg>
-      <SocialBar/>
+      <SocialBar />
     </Content>
   )
 }
@@ -20,16 +20,14 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1440px;
   width: 100%;
-  margin: 0 auto;
-  height: 80px;
-  background-color: #F3F3F3;
-  border-bottom: red solid 5px;
+  height: 74px;
+  background-color: #D3D3D3;
+  border-bottom: red solid 4px;
 `
 const WrapperImg = styled.div`
   height: auto;
-  width: 255px;
+  width: 190px;
   margin-left: 20px;
 
   @media (max-width: 470px){

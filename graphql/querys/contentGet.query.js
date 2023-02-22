@@ -2,36 +2,57 @@ import { gql } from "@apollo/client"
 
 export const QUERY_CONTENT_GET = gql`
   query {
-    get(site_id: "larepublica", category_id: "5f37fa1dc6ad3847057b6af2") {
-      _id
-      name
+    packages (
+        limit: 100
+        page: 1
+        order_field: "_id"
+        order_sort: "asc"
+        subdomain: "special"
+      ) {
       data {
-        body
-        categories {
-          _id
-          name
-          type
-          slug
-          primary
-        }
-        multimedia {
-          path
-          type
-          subtype
-          data {
-            title
-            alt
-            credits
-            source
-            type_video
-            image_path
-            embed
+        slug
+        status
+        data {
+          subdomain
+          directory
+          file {
+            _id
+            type
+            path
+            data {
+              title
+              credits
+              source
+            }
+          }
+          multimedia {
+            _id
+            type
+            path
+            data {
+              title
+              credits
+              source
+              image_path
+              type_video
+              embed
+            }
           }
         }
+        metadata_seo {
+          keywords
+          seo_title
+          seo_description
+        }
+        metadata {
+          key
+          value
+        }
       }
-      questions {
-        count
-      }
+      total
+      per_page
+      current_page
+      last_page
     }
   }
 `
